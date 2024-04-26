@@ -1,0 +1,145 @@
+body {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+}
+
+.login-form {
+    max-width: 300px;
+    margin: auto;
+}
+
+.lists-overview {
+    float: left;
+    width: 70%;
+    margin: 1%;
+}
+
+.listscrollmenu {
+    background-color: #333;
+    overflow: hidden;
+    white-space: nowrap;
+    position: relative;
+}
+
+.listscrollmenu::-webkit-scrollbar {
+    display: none;
+}
+
+.menu-container {
+    overflow: hidden;
+    white-space: nowrap;
+    padding: 10px 0;
+}
+
+.menu {
+    display: inline-block;
+}
+
+.menu a {
+    display: inline-block;
+    color: white;
+    text-align: center;
+    padding: 14px;
+    text-decoration: none;
+}
+
+.menu a:hover {
+    background-color: #777;
+}
+
+.scroll-btn {
+    background-color: rgba(51, 51, 51, 0.5); /* Adjust the opacity as needed */
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    padding: 10px;
+    z-index: 1;
+    transition: background-color 0.3s;
+}
+
+
+.scroll-btn:hover {
+    background-color: #555;
+}
+
+.left-btn {
+    left: 0;
+}
+
+.right-btn {
+    right: 0;
+}
+
+@keyframes fadeOut {
+    0% { opacity: 1; }
+    100% { opacity: 0; display: none; }
+}
+
+.alert {
+    padding: 1%;
+    animation: fadeOut 2s forwards;
+    animation-delay: 1s;
+}
+
+.alert.error {
+    background-color: #e96969;
+}
+
+.alert.success {
+    background-color: #69e985;
+}
+
+.popup-bg {
+    background-color: #0000003f;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: none;
+    justify-content: center;
+    align-items: center;
+}
+
+.popup-box {
+    width: 300px;
+    height: 200px;
+    background-color: #fff;
+    border-radius: 10px;
+    border: 1px #333;
+    text-align: center;
+}
+
+.cancel-send-message-btn, .cancel-add-users-btn {
+    margin-block: 30px;
+    margin-inline: 110px;
+}
+
+.actions {
+    float: right;
+    width: 25%;
+    height: 80%;
+    margin: 1%;
+    background-color: #777;
+    text-align: center;
+}
+
+.action-container {
+    height: 8%;
+}
+
+.actions-btn {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    border: 2px solid rgb(179, 179, 179);
+}
+
+.actions-header {
+    position: relative;
+    text-align: center;
+}

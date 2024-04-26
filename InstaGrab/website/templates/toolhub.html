@@ -1,0 +1,78 @@
+{% extends 'base.html' %}
+
+{% block title %}Tool Hub{% endblock %}
+
+{% block content%}
+<div class="lists-overview">
+    <div class="listscrollmenu">
+        <button class="scroll-btn left-btn">&#10094;</button>
+        <div class="menu-container">
+            <div class="menu">
+                {% for list in data %}
+                    <a href="#" class="list {{list['id']}}">{{ list['name'] }}</a>
+                {% endfor %}
+                <a title="New list" class="new-list-btn">+</a>
+            </div>
+        </div>
+        <button class="scroll-btn right-btn">&#10095;</button>
+    </div>
+    <div class="list-displayer">
+        {% for list in data %}
+            <div class="list-display number{{list['id']}}" style="display: none;">
+                {% for username in list['usernames'] %}
+                    <p>{{username}}</p>
+                {% endfor %}
+            </div>
+        {% endfor %}
+    </div>
+</div>
+<div class="popup-bg new-list">
+    <div class="popup-box">
+        <form action="/newlist" method="post" class="name-list-form">
+            <h2>Name your list</h2>
+            <input type="text" id="listname" name="listname" required>
+            <input type="submit" value="Submit">
+        </form>
+        <button class="cancel-new-list-btn">Cancel</button>
+    </div>
+</div>
+<div class="popup-bg add-users">
+    <div class="popup-box">
+        <form action="/addusernames" method="post" class="add-users-form">
+            <h2>Add usernames</h2>
+            <label for="fromaccount">From followers of :</label>
+            <input type="text" name="fromaccount">
+            <input type="hidden" name="listId" id="list-id-input" required>
+            <input type="submit" value="Submit">
+        </form>
+        <button class="cancel-add-users-btn">Cancel</button>
+    </div>
+</div>
+<div class="popup-bg message">
+    <div class="popup-box">
+        <form action="/sendmessage" method="post" class="send-message-form">
+            <h2>Send message</h2>
+            <label for="message">Message :</label>
+            <input type="text" name="message">
+            <input type="hidden" name="listId" id="list-id-input" required>
+            <input type="submit" value="Submit">
+        </form>
+        <button class="cancel-send-message-btn">Cancel</button>
+    </div>
+</div>
+<div class="actions">
+    <h2 class="actions-header">Actions</h2>
+    <form action="/deletelist" method="post" class="action-container delete">
+        <input type="hidden" name="listId" id="list-id-input" required>
+        <button type="submit" class="actions-btn delete-list">Delete</button>
+    </form>
+    <div class="action-container add">
+        <button class="actions-btn add-users">Add usernames</button>
+    </div>
+    <div class="action-container message">
+        <button class="actions-btn send-message">Send message</button>
+    </div>
+</div>
+
+<script src="{{ url_for('static', filename='toolHubScript.js') }}"></script>
+{% endblock %}

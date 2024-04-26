@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <title>{% block title%}Home{% endblock %}</title>
+  </head>
+  <body>
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <a class="navbar-brand" href="{{url_for('routes.home')}}">InstaGrab</a>
+          </div>
+          <ul class="nav navbar-nav">
+            <li {% if active_page == 'home' %}class="active"{% endif %}><a href="{{ url_for('routes.home') }}">Home</a></li>
+            <li {% if active_page == 'toolhub' %}class="active"{% endif %}><a href="{{ url_for('routes.toolHub') }}">Tool hub</a></li>
+            <li {% if active_page == 'login' %}class="active"{% endif %}><a href="{{ url_for('routes.login') }}">Login</a></li>
+            <li><a href="{{ url_for('routes.logout') }}">Logout</a></li>
+        </ul>
+        </div>
+    </nav>
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        {% for category, message in messages %}
+          {% if category == 'error' %}
+            <div class="alert error" role="alert">
+              {{ message }}
+            </div>
+          {% else %}
+            <div class="alert success" role="alert">
+              {{ message }}
+            </div>
+          {% endif %}
+        {% endfor %}
+      {% endif %}
+    {% endwith %}
+
+    {% block content %}
+    {% endblock %}
+  </body>
+</html>
